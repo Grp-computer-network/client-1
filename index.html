@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Photographer Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .fade-in {
+  opacity: 0;
+  transform: translateX(-50px); /* Slide from left */
+  transition: all 0.8s ease-out;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+    @keyframes pulseImage {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .animate-pulse-custom {
+      animation: pulseImage 6s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class=" text-gray-800 font-sans leading-relaxed tracking-wide" style="background-color: lightblue;">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 w-full bg-white shadow z-50" style="background-color: #003366;">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+      
+      <!-- Logo -->
+      <!-- Logo + Name -->
+      <a href="#" class="flex items-center space-x-3">
+        <img src="Document from Krithick.png" alt="Logo" class="h-11 w-11 object-contain rounded-full border border-gray-300 bg-white shadow-md">
+        <span class="text-xl font-bold text-gray-800" style="color: #fff;">Personal Portfolio</span>
+      </a>
+      
+  
+      <!-- Hamburger Button (always visible) -->
+      <button id="menuBtn" class=" focus:outline-none z-50" style="color: #fff;">
+        <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="2"
+             viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  
+    <!-- Overlay Background -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+  
+    <!-- Slide-in Navigation Menu -->
+    <nav id="navMenu"
+         class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50 p-6 space-y-4">
+      <button id="closeBtn" class="text-gray-800 absolute top-4 right-4">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"
+             viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <a href="#hero" class="block text-gray-700 hover:text-yellow-500">Home</a>
+      <a href="#gallery" class="block text-gray-700 hover:text-yellow-500">Gallery</a>
+      <a href="#about" class="block text-gray-700 hover:text-yellow-500">About</a>
+      <a href="#contact" class="block text-gray-700 hover:text-yellow-500">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero --> 
+  <section id="hero" class="relative h-screen w-full bg-center bg-cover fade-in" style="background-image: url('back-ground.jpg'); margin-top: 64px;">
+    <div class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
+      <div class="text-center text-white px-4">
+        <h1 class="text-5xl md:text-6xl font-bold mb-4">Capturing Life's Moments</h1>
+        <p class="text-xl mb-6">By <span class="font-semibold text-yellow-300" style="color:teal">Yugendran</span></p>
+        <a href="#gallery" class="bg-yellow-300 text-black px-6 py-3 rounded-lg shadow hover:bg-yellow-400 transition" style="background-color: teal; color: #fff;">View My Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Image Section -->
+  <section class="text-center my-16 fade-in">
+    <h2 class="text-3xl font-bold mb-4">Meet the Artist</h2>
+    <div class="relative flex flex-col items-center gap-4">
+      <!-- Watermark Logo (background) -->
+      <img
+        src="Document from Krithick.png"  
+        alt="Watermark Logo"
+        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-10 scale-150 pointer-events-none select-none"
+        style="z-index: 0;" />
+    
+      <!-- Client Image (foreground) -->
+      <img
+        id="clientImage"
+        src="IMG-20250409-WA0040-removebg-preview.png"
+        alt="Client Portrait"
+        class="relative z-10 cursor-pointer hover:scale-105 transform transition duration-300 animate-pulse-custom"
+        style="max-width: 280px;"
+      />
+      
+      <p class="text-lg text-gray-700 font-medium relative z-10">Yugendran</p>
+    </div>    
+    <p class="mt-3 text-gray-600">Click the image to view in spotlight</p>
+  </section>
+
+  <!-- Modal Overlay -->
+  <div id="modalOverlay" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden">
+    <div class="text-center">
+      <img
+        id="modalImage"
+        src="IMG-20250409-WA0040-removebg-preview.png"
+        alt="Client Large View"
+        class="max-h-[70vh] max-w-[90vw] mx-auto rounded-lg shadow-xl"
+      />
+      <p class="text-white text-2xl font-semibold mt-4">Yugendran</p>
+    </div>
+  </div>
+
+  <!-- Gallery -->
+  <section id="gallery" class="fade-in py-20 px-6 bg-gray-50" style="background-color: #A0E7E5;">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-6">Gallery</h2>
+      <p class="text-gray-600 mb-10">A collection of my favorite shots from various sessions.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <img class="rounded-lg shadow-lg fade-in hover:scale-105 transition" src="https://source.unsplash.com/random/300x300?portrait" alt="Gallery Image" />
+        <img class="rounded-lg shadow-lg fade-in hover:scale-105 transition" src="https://source.unsplash.com/random/300x301?portrait" alt="Gallery Image" />
+        <img class="rounded-lg shadow-lg fade-in hover:scale-105 transition" src="https://source.unsplash.com/random/300x302?portrait" alt="Gallery Image" />
+        <img class="rounded-lg shadow-lg fade-in hover:scale-105 transition" src="https://source.unsplash.com/random/300x303?portrait" alt="Gallery Image" />
+        <img class="rounded-lg shadow-lg fade-in hover:scale-105 transition" src="https://source.unsplash.com/random/300x304?portrait" alt="Gallery Image" />
+        <img class="rounded-lg shadow-lg fade-in hover:scale-105 transition" src="https://source.unsplash.com/random/300x305?portrait" alt="Gallery Image" />
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="fade-in py-20 px-6 bg-white">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-6" style="color: teal;">About Me</h2>
+      <p class="text-gray-700 text-lg leading-relaxed">
+        I'm a passionate photographer who believes in capturing raw emotions and genuine moments.
+        Whether it's weddings, portraits, or travel photography, my goal is to tell stories through the lens.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="fade-in py-20 px-6 bg-gray-100">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-6" style="color: teal;">Contact</h2>
+      <p class="text-gray-600 mb-6">Let’s talk! Reach out for bookings or inquiries.</p>
+      <form class="space-y-4 text-left">
+        <input type="text" placeholder="Your Name" class="w-full px-4 py-2 border rounded" />
+        <input type="email" placeholder="Your Email" class="w-full px-4 py-2 border rounded" />
+        <textarea placeholder="Your Message" rows="4" class="w-full px-4 py-2 border rounded"></textarea>
+        <button type="submit" class=" hover:bg-yellow-500 text-black px-6 py-2 rounded" style="background-color: teal; color:#fff">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-6 text-center" style="background-color: #003366;">
+    <p>&copy; 2025 Yugendran. All rights reserved.</p>
+  </footer>
+
+  <!-- Scroll Reveal Script -->
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  </script>
+
+  <!-- Modal Image Click Script -->
+  <script>
+    const clientImage = document.getElementById("clientImage");
+    const modalOverlay = document.getElementById("modalOverlay");
+
+    clientImage.addEventListener("click", () => {
+      modalOverlay.classList.remove("hidden");
+    });
+
+    modalOverlay.addEventListener("click", () => {
+      modalOverlay.classList.add("hidden");
+    });
+    const menuBtn = document.getElementById("menuBtn");
+  const navMenu = document.getElementById("navMenu");
+  const overlay = document.getElementById("overlay");
+  const closeBtn = document.getElementById("closeBtn");
+
+  menuBtn.addEventListener("click", () => {
+    navMenu.classList.remove("translate-x-full");
+    overlay.classList.remove("hidden");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    navMenu.classList.add("translate-x-full");
+    overlay.classList.add("hidden");
+  });
+
+  overlay.addEventListener("click", () => {
+    navMenu.classList.add("translate-x-full");
+    overlay.classList.add("hidden");
+  });
+  </script>
+
+</body>
+</html>
