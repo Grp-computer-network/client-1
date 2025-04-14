@@ -129,71 +129,51 @@ background-image: url('logo.png');
     </div>
   </section>
 
-    <!-- Client Image Section -->
-<section class="slide-in-right" id="contact">
-  <section class="text-center my-16">
-    <h2 class="text-3xl font-bold mb-4">Meet the Artist</h2>
-    
-    <!-- Client image with background watermark, contained properly -->
-    <div class="relative inline-block mx-auto w-fit overflow-hidden rounded-lg">
-      <!-- Watermark logo (contained inside div) -->
-      <img
-        src="logo.png"
-        alt="Watermark Logo"
-        class="absolute inset-0 opacity-10 scale-150 pointer-events-none select-none"
-        style="z-index: 0;"
-      />
-      
-      <!-- Client image -->
-      <img
-        id="clientImage"
-        src="client-pic.png"
-        alt="Client Portrait"
-        class="relative z-10 cursor-pointer hover:scale-105 transform transition duration-300 animate-pulse-custom"
-        style="max-width: 280px;"
-      />
-    </div>
-    
-    <p class="text-lg text-gray-700 font-medium mt-4">YugendraRaja</p>
-    <p class="mt-2 text-gray-600">Click the image to view in spotlight</p>
-  </section>
-
-  <!-- Modal Overlay -->
-  <div
-  id="modalOverlay"
-  class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden"
+    <!-- Client Image Section --><section
+  id="contact"
+  class="slide-in-right relative text-center py-16"
+  style="background: url('30+\ Presentation\ Background\ Images\ for\ PowerPoint.jpg') no-repeat center center / cover;"
 >
-  <div class="text-center">
-    <!-- Neon Glow Text -->
+  <!-- Optional dark overlay for contrast -->
+
+  <!-- Content -->
+  <div class="relative z-10">
+    <!-- Title with reduced neon effect -->
     <p
-      class="text-white text-2xl font-bold mt-4"
-      style="color: black; text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff;"
+      class="text-2xl font-bold mt-4"
+      style="color: black; text-shadow: 0 0 3px #00ffff, 0 0 6px #fff; font-size: 40px;"
     >
       Photographer
-    </p> <br>
+    </p>
+    <br />
 
-    <!-- Image with Teal Drop Shadow -->
-    <img
-      id="modalImage"
-      src="client-pic.png"
-      alt="Client Large View"
-      class="max-h-[70vh] max-w-[90vw] mx-auto rounded-lg shadow-xl"
-      style="box-shadow: 0 4px 20px teal;"
-    />
+    <!-- Client image with slightly zoomed logo as background -->
+    <div
+      class="relative inline-block mx-auto w-fit overflow-hidden rounded-lg p-2"
+      style="
+        background: url('logo.png') center center / 120% no-repeat;
+        background-blend-mode: normal;
+      "
+    >
+      <img
+        src="client-pic.png"
+        alt="Client Portrait"
+        class="relative z-10 max-h-[70vh] max-w-[90vw] mx-auto rounded-lg shadow-xl"
+        style="box-shadow: 0 4px 12px teal;"
+      />
+    </div>
 
-    <!-- Neon Glow Text -->
+    <!-- Artist Name with reduced neon effect -->
     <p
-      class="text-white text-2xl font-bold mt-4"
-      style="color: teal; text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff;"
+      class="text-2xl font-bold mt-4"
+      style="color: #fff; text-shadow: 0 0 3px black, 0 0 6px #fff; font-size: 40px;"
     >
       YugendraRaja
     </p>
   </div>
-</div>
-
-
 </section>
 
+</div>
   <!-- Gallery -->
   <section class="slide-in-left" id="about"> 
     <section id="gallery" class="py-20 px-6 bg-gray-50" style="background-color: #A0E7E5;">
