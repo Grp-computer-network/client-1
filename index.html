@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Photographer Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
   <style>
     html {
       scroll-behavior: smooth;
@@ -31,6 +32,25 @@
     .animate-pulse-custom {
       animation: pulseImage 6s ease-in-out infinite;
     }
+    html, body {
+  overflow-x: hidden;
+    }
+    .slide-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s ease-out;
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s ease-out;
+}
+
+.show {
+  opacity: 1;
+  transform: translateX(0);
+}
   </style>
 </head>
 <body class=" text-gray-800 font-sans leading-relaxed tracking-wide" style="background-color: lightblue;">
@@ -80,19 +100,20 @@
     <div class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
       <div class="text-center text-white px-4">
         <h1 class="text-5xl md:text-6xl font-bold mb-4">Capturing Life's Moments</h1>
-        <p class="text-xl mb-6">By <span class="font-semibold text-yellow-300" style="color:teal">Yugendran</span></p>
+        <p class="text-xl mb-6">By <span class="font-semibold text-yellow-300" style="color:teal">YugendraRaja</span></p>
         <a href="#gallery" class="bg-yellow-300 text-black px-6 py-3 rounded-lg shadow hover:bg-yellow-400 transition" style="background-color: teal; color: #fff;">View My Work</a>
       </div>
     </div>
   </section>
 
   <!-- Client Image Section -->
-  <section class="text-center my-16 fade-in">
+  <section class="slide-in-right" id="contact">
+  <section class="text-center my-16 ">
     <h2 class="text-3xl font-bold mb-4">Meet the Artist</h2>
     <div class="relative flex flex-col items-center gap-4">
       <!-- Watermark Logo (background) -->
       <img
-        src="Document from Krithick.png"  
+        src="logo.png"  
         alt="Watermark Logo"
         class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-10 scale-150 pointer-events-none select-none"
         style="z-index: 0;" />
@@ -100,13 +121,13 @@
       <!-- Client Image (foreground) -->
       <img
         id="clientImage"
-        src="IMG-20250409-WA0040-removebg-preview.png"
+        src="client-pic.png"
         alt="Client Portrait"
         class="relative z-10 cursor-pointer hover:scale-105 transform transition duration-300 animate-pulse-custom"
         style="max-width: 280px;"
       />
       
-      <p class="text-lg text-gray-700 font-medium relative z-10">Yugendran</p>
+      <p class="text-lg text-gray-700 font-medium relative z-10" style="color: black;">YugendraRaja</p>
     </div>    
     <p class="mt-3 text-gray-600">Click the image to view in spotlight</p>
   </section>
@@ -114,49 +135,104 @@
   <!-- Modal Overlay -->
   <div id="modalOverlay" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden">
     <div class="text-center">
+      <p class="text-white text-2xl font-bold mt-4" style="color: #fff;">Photographer<p>
       <img
         id="modalImage"
-        src="IMG-20250409-WA0040-removebg-preview.png"
+        src="client-pic.png"
         alt="Client Large View"
-        class="max-h-[70vh] max-w-[90vw] mx-auto rounded-lg shadow-xl"
+        class="max-h-[70vh] max-w-[90vw] mx-auto rounded-lg shadow-xl drop-shadow-[0_4px_6px_rgba(13,14,8,136,0.6)]"
       />
-      <p class="text-white text-2xl font-semibold mt-4">Yugendran</p>
+      <p class="text-white text-2xl font-bold mt-4" style="color: teal;">YugendraRaja</p>
     </div>
   </div>
-
+ </section>
   <!-- Gallery -->
-  <section id="gallery" class="fade-in py-20 px-6 bg-gray-50" style="background-color: #A0E7E5;">
-    <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-6">Gallery</h2>
-      <p class="text-gray-600 mb-10">A collection of my favorite shots from various sessions.</p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <img class="rounded-lg shadow-lg fade-in hover:scale-105 transition" src="https://source.unsplash.com/random/300x300?portrait" alt="Gallery Image" />
-        <img class="rounded-lg shadow-lg fade-in hover:scale-105 transition" src="https://source.unsplash.com/random/300x301?portrait" alt="Gallery Image" />
-        <img class="rounded-lg shadow-lg fade-in hover:scale-105 transition" src="https://source.unsplash.com/random/300x302?portrait" alt="Gallery Image" />
-        <img class="rounded-lg shadow-lg fade-in hover:scale-105 transition" src="https://source.unsplash.com/random/300x303?portrait" alt="Gallery Image" />
-        <img class="rounded-lg shadow-lg fade-in hover:scale-105 transition" src="https://source.unsplash.com/random/300x304?portrait" alt="Gallery Image" />
-        <img class="rounded-lg shadow-lg fade-in hover:scale-105 transition" src="https://source.unsplash.com/random/300x305?portrait" alt="Gallery Image" />
+  <section class="slide-in-left" id="about"> 
+    <section id="gallery" class="py-20 px-6 bg-gray-50" style="background-color: #A0E7E5;">
+      <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-6">Gallery</h2>
+        <p class="text-gray-600 mb-10">A collection of my favorite shots from various sessions.</p>
+  
+        <div class="relative overflow-hidden">
+          <div id="carousel" class="flex transition-transform duration-700 ease-in-out">
+            <!-- Carousel items (You can add more if needed) -->
+            <img class="rounded-lg shadow-lg w-full sm:w-80 flex-shrink-0 mx-2" src="galley-img/Darléte de Siqueira _ Photography _ Edits _ Visuals (@flower_and_art) • Instagram-Fotos und -Videos.jpg" alt="Gallery Image" />
+            <img class="rounded-lg shadow-lg w-full sm:w-80 flex-shrink-0 mx-2" src="galley-img/Desktop 4k Images Free Download.jpg" alt="Gallery Image" />
+            <img class="rounded-lg shadow-lg w-full sm:w-80 flex-shrink-0 mx-2" src="galley-img/Download sunflowers in the mountains, mountains, flowers, hd wallpaper_ AI-Generated for free.jpg" alt="Gallery Image" />
+            <img class="rounded-lg shadow-lg w-full sm:w-80 flex-shrink-0 mx-2" src="galley-img/Flower Photography.jpg" alt="Gallery Image" />
+            <img class="rounded-lg shadow-lg w-full sm:w-80 flex-shrink-0 mx-2" src="galley-img/Morning in nature.jpg" alt="Gallery Image" />
+            <img class="rounded-lg shadow-lg w-full sm:w-80 flex-shrink-0 mx-2" src="galley-img/Premium Photo _ The beautiful scenery of a tent in a pine tree forest at Pang Oung Mae Hong Son province Thailand.jpg" alt="Gallery Image" />
+          </div>
+  
+          <!-- Navigation buttons -->
+          <button onclick="prevSlide()" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white shadow p-2 rounded-full z-10 hover:bg-gray-200">
+            &#8592;
+          </button>
+          <button onclick="nextSlide()" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white shadow p-2 rounded-full z-10 hover:bg-gray-200">
+            &#8594;
+          </button>
+        </div>
       </div>
-    </div>
+    </section>
   </section>
-
   <!-- About -->
-  <section id="about" class="fade-in py-20 px-6 bg-white">
-    <div class="max-w-5xl mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-6" style="color: teal;">About Me</h2>
-      <p class="text-gray-700 text-lg leading-relaxed">
-        I'm a passionate photographer who believes in capturing raw emotions and genuine moments.
-        Whether it's weddings, portraits, or travel photography, my goal is to tell stories through the lens.
-      </p>
-    </div>
-  </section>
-
+  <section class="slide-in-right" id="contact"> 
+    <section id="about" class="py-20 px-6 bg-white">
+      <div class="max-w-5xl mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-6" style="color: teal;">About Me</h2>
+        <p class="text-gray-700 text-lg leading-relaxed mb-10">
+          I'm a passionate photographer who believes in capturing raw emotions and genuine moments.
+          Whether it's weddings, portraits, or travel photography, my goal is to tell stories through the lens.
+        </p>
+  
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6">
+          <div class="bg-teal-50 p-6 rounded-lg shadow hover:shadow-lg transition duration-300"  style="border: 1px solid  teal;">
+            <h3 class="text-xl font-semibold text-teal-700 mb-2 font-bold" style="color: teal;">Video Editing </h3>
+            <p class="text-gray-600 text-sm ">Adobe premiere Pro, Final cut Pro</p>
+          </div>
+          <div class="bg-teal-50 p-6 rounded-lg shadow hover:shadow-lg transition duration-300" style="border: 1px solid  teal;">
+            <h3 class="text-xl font-semibold text-teal-700 mb-2 font-bold" style="color: teal;">Photo  Editing</h3>
+            <p class="text-gray-600 text-sm">Adobe Photoshop</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>  
+  <section class="slide-in-left" id="about">
+    <section id="skills" class="py-20" style="background-color: teal;">
+      <div class="max-w-6xl mx-auto px-4" style="border-radius: 10px;">
+        <h2 class="text-4xl font-bold text-center mb-10" style="color: #ffffff;">My Photography Skills</h2>
+        
+        <div class="overflow-hidden relative">
+          <div id="skills-track" class="flex gap-6 animate-slide">
+            <div class="skill-card font-bold">Travel Photography</div>
+            <div class="skill-card font-bold">Food Photography</div>
+            <div class="skill-card font-bold">Street Photography</div>
+            <div class="skill-card font-bold">Portrait Photography</div>
+            <div class="skill-card font-bold">Event Photography</div>
+            <div class="skill-card font-bold">Documentry Photography</div>
+            <div class="skill-card font-bold">Astrophotgraphy</div>
+    
+            <!-- Duplicate cards for smooth loop -->
+            <div class="skill-card font-bold">Travel Photography</div>
+            <div class="skill-card font-bold">Food Photography</div>
+            <div class="skill-card font-bold">Street Photography</div>
+            <div class="skill-card font-bold">Portrait Photography</div>
+            <div class="skill-card font-bold">Event Photography</div>
+            <div class="skill-card font-bold">Documentry Photography</div>
+            <div class="skill-card font-bold">Astrophotgraphy</div>
+          </div>
+        </div>
+      </div>
+    </section>
+</section>    
+  <section class="slide-in-right" id="about">
   <!-- Contact -->
-  <section id="contact" class="fade-in py-20 px-6 bg-gray-100">
+  <section id="contact" class=" py-20 px-6 bg-gray-100" style="background-color: lightblue;">
     <div class="max-w-3xl mx-auto text-center">
       <h2 class="text-4xl font-bold mb-6" style="color: teal;">Contact</h2>
       <p class="text-gray-600 mb-6">Let’s talk! Reach out for bookings or inquiries.</p>
-      <form class="space-y-4 text-left">
+      <form class="space-y-4 text-left" >
         <input type="text" placeholder="Your Name" class="w-full px-4 py-2 border rounded" />
         <input type="email" placeholder="Your Email" class="w-full px-4 py-2 border rounded" />
         <textarea placeholder="Your Message" rows="4" class="w-full px-4 py-2 border rounded"></textarea>
@@ -164,63 +240,15 @@
       </form>
     </div>
   </section>
-
+  </section>
   <!-- Footer -->
   <footer class="bg-gray-800 text-white py-6 text-center" style="background-color: #003366;">
     <p>&copy; 2025 Yugendran. All rights reserved.</p>
   </footer>
 
   <!-- Scroll Reveal Script -->
-  <script>
-    const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px"
-    };
-    const appearOnScroll = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('show');
-        observer.unobserve(entry.target);
-      });
-    }, appearOptions);
-    faders.forEach(fader => {
-      appearOnScroll.observe(fader);
-    });
-  </script>
-
-  <!-- Modal Image Click Script -->
-  <script>
-    const clientImage = document.getElementById("clientImage");
-    const modalOverlay = document.getElementById("modalOverlay");
-
-    clientImage.addEventListener("click", () => {
-      modalOverlay.classList.remove("hidden");
-    });
-
-    modalOverlay.addEventListener("click", () => {
-      modalOverlay.classList.add("hidden");
-    });
-    const menuBtn = document.getElementById("menuBtn");
-  const navMenu = document.getElementById("navMenu");
-  const overlay = document.getElementById("overlay");
-  const closeBtn = document.getElementById("closeBtn");
-
-  menuBtn.addEventListener("click", () => {
-    navMenu.classList.remove("translate-x-full");
-    overlay.classList.remove("hidden");
-  });
-
-  closeBtn.addEventListener("click", () => {
-    navMenu.classList.add("translate-x-full");
-    overlay.classList.add("hidden");
-  });
-
-  overlay.addEventListener("click", () => {
-    navMenu.classList.add("translate-x-full");
-    overlay.classList.add("hidden");
-  });
-  </script>
-
+  <script src="scripts-file/script.js"></script>
+  <script src="scripts-file/script-scroll.js"></script>
+  <script src="scripts-file/carosule.js"></script>
 </body>
 </html>

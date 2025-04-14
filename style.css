@@ -1,0 +1,26 @@
+@keyframes slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  
+  #skills-track {
+    width: max-content;
+    animation: slide 25s linear infinite;
+  }
+  
+  .skill-card {
+    flex: 0 0 auto;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+    color: #003366;
+    min-width: 240px;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  .skill-card:hover {
+    transform: scale(1.05);
+  }
+  
