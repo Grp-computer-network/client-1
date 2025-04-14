@@ -1,0 +1,17 @@
+#modalOverlay {
+    background-image: url('logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* Mobile (default): cover */
+  #modalOverlay {
+    background-size: cover;
+  }
+
+  /* Desktop (md and up): contain */
+  @media (min-width: 768px) {
+    #modalOverlay {
+      background-size: contain;
+    }
+  }
