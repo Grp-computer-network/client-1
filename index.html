@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="style-files/style.css">
   <link rel="stylesheet" href="style-files/pop-up.css">
   <link rel="stylesheet" href="style-files/neon-effect.css">
+  <link rel="stylesheet" href="style-files/typing-effects.css">
   <style>
     *{
       font-family: "Montserrat", sans-serif;
@@ -75,6 +76,14 @@ background-image: url('logo.png');
       background-size: contain;
     }
   }
+  @keyframes zoomInSlow {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+#hero {
+  animation: zoomInSlow 20s ease-in-out infinite alternate;
+}
+
   </style>
 </head>
 <body class=" text-gray-800 font-sans leading-relaxed tracking-wide" style="background-color: #eaeaea">
@@ -123,7 +132,9 @@ background-image: url('logo.png');
   <section id="hero" class="relative h-screen w-full bg-center bg-cover fade-in" style="background-image: url('back-ground.jpg'); margin-top: 64px;">
     <div class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
       <div class="text-center text-white px-4">
-        <h1 class="text-5xl md:text-6xl font-bold mb-4">Capturing Life's Moments</h1>
+        <h1 id="typewriter" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 responsive-typewriter">
+          Capturing Life's Moments
+        </h1>        
         <p class="text-xl mb-6">By <span class="font-semibold text-yellow-300" style="color:teal">YugendraRaja</span></p>
         <a href="#gallery" class="bg-yellow-300 text-black px-6 py-3 rounded-lg shadow hover:bg-yellow-400 transition" style="background-color: teal; color: #fff;">View My Work</a>
       </div>
@@ -133,10 +144,11 @@ background-image: url('logo.png');
     <!-- Client Image Section --><section
   id="contact"
   class="slide-in-right relative text-center py-16"
-  style="background: url('section-bg.jpg') no-repeat center center / cover;"
+  style="background: url('logo.png') no-repeat center center / cover;"
 >
   <!-- Optional dark overlay for contrast -->
 
+  <div class="absolute inset-0 bg-white bg-opacity-60 z-0"></div>
   <!-- Content -->
   <div class="relative z-10">
     <!-- Title with reduced neon effect -->
@@ -157,7 +169,7 @@ background-image: url('logo.png');
       "
     >
       <img
-        src="client-pic.png"
+        src="client-pic__1_-removebg-preview.png"
         alt="Client Portrait"
         class="relative z-10 max-h-[70vh] max-w-[90vw] mx-auto rounded-lg shadow-xl"
         style="box-shadow: 0 4px 12px teal;"
@@ -167,7 +179,7 @@ background-image: url('logo.png');
     <!-- Artist Name with reduced neon effect -->
     <p
       class="text-2xl font-bold mt-4"
-      style="color: #fff; text-shadow: 0 0 3px black, 0 0 6px #fff; font-size: 40px;"
+      style="color: teal; text-shadow: 0 0 3px #00ffff, 0 0 6px #fff; font-size: 40px;"
     >
       YugendraRaja
     </p>
@@ -279,5 +291,26 @@ background-image: url('logo.png');
   <script src="scripts-file/script.js"></script>
   <script src="scripts-file/script-scroll.js"></script>
   <script src="scripts-file/carosule.js"></script>
+  <script>
+    document.addEventListener("mousemove", (e) => {
+      const hero = document.getElementById("hero");
+      const x = (e.clientX / window.innerWidth) - 0.5;
+      const y = (e.clientY / window.innerHeight) - 0.5;
+      hero.style.backgroundPosition = `${50 + x * 10}% ${50 + y * 10}%`;
+    });
+  </script>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    });
+  
+    document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+      observer.observe(el);
+    });
+  </script>    
 </body>
 </html>
